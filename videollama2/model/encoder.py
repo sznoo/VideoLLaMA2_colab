@@ -21,7 +21,7 @@ class CLIPVisionTower(nn.Module):
         self.image_processor = CLIPImageProcessor.from_pretrained(self.vision_tower_name)
 
         config = CLIPVisionConfig.from_pretrained(self.vision_tower_name)
-        config._attn_implementation = "flash_attention_2"
+        config._attn_implementation = "eager"
 
         if not load_pretrained:
             self.vision_tower = CLIPVisionModel(config=config)
